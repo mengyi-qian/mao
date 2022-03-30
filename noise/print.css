@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+button { display: none ; }
+body { 
+  font-size: 1em;
+  font-family: 'Newsreader', serif;
+  margin-top: 125px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 125px;
+  line-height: 1.5;
+}
