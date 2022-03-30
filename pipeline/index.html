@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pipeline</title>
+
+    <style>
+      @font-face {
+        font-family: "schoolbook";
+        src: url("https://cdn.glitch.com/33f4dc95-ae6e-474a-9462-9d044b443503%2FCentury%20Schoolbook%20Std%20Regular.otf?v=1621067095465");
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: schoolbook, serif;
+        font-style: normal;
+      }
+      body {
+        min-height: 100000vh;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      #banner {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+      }
+      .info {
+        width: 100vw;
+        position: fixed;
+        display: block;
+        font-size: 24px;
+        color: white;
+        height: 100vh;
+        margin: 12px;
+      }
+      #loc {
+        position: absolute;
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+        letter-spacing: 5px;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #location {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+      }
+      #location:hover {
+        text-decoration: line-through;
+      }
+      #locationlist {
+        position: absolute;
+        display: none;
+        list-style: none;
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      li {
+        margin-left: 5vw;
+        margin-right: 5vw;
+      }
+      li:hover {
+        text-decoration: line-through;
+        cursor: pointer;
+      }
+
+      a:link,
+      a:visited,
+      a:hover,
+      a:active {
+        color: white;
+        text-decoration: none;
+      }
+      @media only screen and (max-width: 600px) {
+        * {
+          font-size: 20px;
+          letter-spacing: 5px;
+        }
+/*         #banner {
+          width: 100vw;
+          height: auto;
+        } */
+        /*         video#mobile{
+          display:inline;
+        } */
+        /*         video#myvideo{
+          display:none;
+        } */
+        #myvideo {
+          top: 0;
+          left: 50%;
+          width: 100%;
+/*           transform: translate(-50%); */
+        }
+        .info {
+          width: 100vw;
+          height: 100vh;
+          margin: 0px;
+          text-align: center;
+        }
+        #abouttitle,
+        #address,
+        #loc {
+          writing-mode: horizontal-tb;
+          transform-origin: center;
+          text-align: center;
+          position: relative;
+          z-index: 99;
+        }
+        #about {
+          bottom: 0px;
+        }
+        #abouttitle {
+          top: 94vh;
+        }
+        #abouttext {
+          top: 25%;
+          width: 85vw;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        li {
+          margin-top: 5vw;
+          margin-bottom: 5vw;
+        }
+      }
+      @media only screen and (min-width: 600px) {
+        #abouttitle:hover + #abouttext {
+          display: block;
+        }
+        #myvideo {
+          position: absolute;
+          height: 100%;
+          left: 0;
+          top: 0;
+          object-fit: cover;
+        }
+      }
+    </style>
+  </head>
+  <!-- <body onload="window.resizeTo(800,600);"> -->
+  <body>
+    <div id="banner">
+      <video
+        id="myvideo"
+        tabindex="0"
+        preload
+        autoplay
+        disablepictureinpicture
+        playsinline
+      >
+        <source
+          src="https://cdn.glitch.com/33f4dc95-ae6e-474a-9462-9d044b443503%2Fdesktop.mp4?v=1621101201111"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <div class="info">
+      <div id="loc">
+        <span id="location">Pipeline</span>
+        <ul id="locationlist">
+          <li id="intro">Intro</li>
+          <li id="loc1">205&nbsp;Church&nbsp;St</li>
+          <li id="loc2">221&nbsp;Church&nbsp;St</li>
+          <li id="loc3">198&nbsp;Park&nbsp;St</li>
+          <li id="loc4">77&nbsp;Howe&nbsp;St</li>
+          <li id="loc5">363&nbsp;Temple&nbsp;St</li>
+          <li id="loc6">258&nbsp;Church&nbsp;St</li>
+          <li id="loc7">213&nbsp;Crown&nbsp;St</li>
+          <li id="loc8">367&nbsp;Cedar&nbsp;St</li>
+          <li id="loc9">728&nbsp;Howard&nbsp;Ave</li>
+          <li id="loc10">20&nbsp;Church&nbsp;St</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      let isMobile = false;
+
+      let vid = document.querySelector("video#myvideo");
+      let address = document.querySelector("#address");
+
+      let loc = document.querySelector("#loc");
+
+      let locationspan = document.querySelector("#location");
+      let locationlist = document.querySelector("#locationlist");
+
+      let locclicked = false;
+      let intro = document.querySelector("#intro");
+      let location1 = document.querySelector("#loc1");
+      let location2 = document.querySelector("#loc2");
+      let location3 = document.querySelector("#loc3");
+      let location4 = document.querySelector("#loc4");
+      let location5 = document.querySelector("#loc5");
+      let location6 = document.querySelector("#loc6");
+      let location7 = document.querySelector("#loc7");
+      let location8 = document.querySelector("#loc8");
+      let location9 = document.querySelector("#loc9");
+      let location10 = document.querySelector("#loc10");
+      let banner = document.querySelector("#banner");
+      let info = document.querySelectorAll(".info")[0];
+      
+      let video = document.querySelector("#myvideo");
+
+      if (window.innerWidth < 600) {
+        isMobile = true;
+      } else {
+        isMobile = false;
+      }
+
+      if (isMobile == true) {
+        
+        video.setAttribute("src", "https://cdn.glitch.com/33f4dc95-ae6e-474a-9462-9d044b443503%2Fmobile444.mp4?v=1621091527440");
+        
+        banner.addEventListener("click", function() {
+          if (aboutclicked == true) {
+            // abouttext.style.display = "none";
+            loc.style.display = "block";
+            // address.style.display = "block";
+            info.style.pointerEvents = "auto";
+            // aboutclicked = false;
+          }
+        });
+        info.addEventListener("click", function() {
+          vid.play();
+        });
+      }
+
+      locationspan.addEventListener("click", function(e) {
+        e.preventDefault();
+        if (locclicked == false) {
+          locationlist.style.display = "block";
+          locationspan.style.display = "none";
+          locclicked = true;
+        } else {
+          locationlist.style.display = "none";
+          locclicked = false;
+        }
+      });
+      banner.addEventListener("click", function() {
+        if (locclicked == true) {
+          locationlist.style.display = "none";
+          info.style.pointerEvents = "auto";
+          locclicked = false;
+        }
+      });
+
+      intro.addEventListener("click", function() {
+        let loc = intro.innerHTML;
+        locationspan.innerHTML = ` `;
+        vid.currentTime = 0;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location1.addEventListener("click", function() {
+        let loc = location1.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 16;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location2.addEventListener("click", function() {
+        let loc = location2.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 100;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location3.addEventListener("click", function() {
+        let loc = location3.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 215;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location4.addEventListener("click", function() {
+        let loc = location4.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 321;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location5.addEventListener("click", function() {
+        let loc = location5.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 447;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location6.addEventListener("click", function() {
+        let loc = location6.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 572;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location7.addEventListener("click", function() {
+        let loc = location7.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 695;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location8.addEventListener("click", function() {
+        let loc = location8.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 815;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location9.addEventListener("click", function() {
+        let loc = location9.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 936;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+      location10.addEventListener("click", function() {
+        let loc = location10.innerHTML;
+        locationspan.innerHTML = `<a href="">${loc}</a>`;
+        vid.currentTime = 1054;
+        vid.play();
+        locationlist.style.display = "none";
+        locationspan.style.display = "block";
+        locclicked = false;
+      });
+
+      let isUserScrolling = false;
+      let lastRecordedScrollPosition = 0;
+      let offsetOffset = 0;
+
+      setInterval(function() {
+        let currentRecordedScrollPosition = window.pageYOffset;
+
+        if (isUserScrolling) {
+          vid.currentTime = window.pageYOffset / 100 + offsetOffset;
+          if (vid.currentTime >= 16 && vid.currentTime < 100) {
+            locationspan.innerHTML = "<div>205&nbsp;Church&nbsp;St</div>";
+          } else if (vid.currentTime >= 100 && vid.currentTime < 215) {
+            locationspan.innerHTML = `<div>221&nbsp;Church&nbsp;St</div>`;
+          } else if (vid.currentTime >= 215 && vid.currentTime < 321) {
+            locationspan.innerHTML = `<div>198&nbsp;Park&nbsp;St</div>`;
+          } else if (vid.currentTime >= 321 && vid.currentTime < 447) {
+            locationspan.innerHTML = `<div>77&nbsp;Howe&nbsp;St</div>`;
+          } else if (vid.currentTime >= 447 && vid.currentTime < 572) {
+            locationspan.innerHTML = `<div>363&nbsp;Temple&nbsp;St</div>`;
+          } else if (vid.currentTime >= 572 && vid.currentTime < 695) {
+            locationspan.innerHTML = `<div>258&nbsp;Church&nbsp;St</div>`;
+          } else if (vid.currentTime >= 695 && vid.currentTime < 815) {
+            locationspan.innerHTML = `<div>213&nbsp;Crown&nbsp;St</div>`;
+          } else if (vid.currentTime >= 815 && vid.currentTime < 936) {
+            locationspan.innerHTML = `<div>367&nbsp;Cedar&nbsp;St</div>`;
+          } else if (vid.currentTime >= 936 && vid.currentTime < 1054) {
+            locationspan.innerHTML = `<div>728&nbsp;Howard&nbsp;Ave</div>`;
+          } else if (vid.currentTime >= 1054 && vid.currentTime < 1160) {
+            locationspan.innerHTML = `<div>20&nbsp;Church&nbsp;St</div>`;
+          } else {
+            locationspan.innerHTML = ` `;
+          }
+        }
+
+        if (lastRecordedScrollPosition != currentRecordedScrollPosition) {
+          // console.log("viewer is scrolling, do nothing");
+          isUserScrolling = true;
+          lastRecordedScrollPosition = currentRecordedScrollPosition;
+        } else {
+          // console.log("viewer has stopped scrolling, play the video");
+
+          //offsetOffset is the difference between the current pageYoffset and time * 100
+          offsetOffset = vid.currentTime - window.pageYOffset / 100;
+
+          isUserScrolling = false;
+          vid.play();
+
+          lastRecordedScrollPosition = window.pageYOffset;
+
+          // console.log(vid.currentTime * 100, window.pageYOffset, offsetOffset);
+          // window.pageYOffset = vid.currentTime * 100
+        }
+
+        // console.log({
+        //   currentTime: vid.currentTime,
+        //   offset: window.pageYOffset
+        // });
+
+        // console.log(window.pageYOffset);
+      }, 41);
+    </script>
+  </body>
+</html>
