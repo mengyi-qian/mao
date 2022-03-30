@@ -325,6 +325,8 @@
           div.focus();
         }, 0);
       });
+
+      // get microphone permission
       function getLocalStream() {
         navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( stream => {
           window.localStream = stream; // A
@@ -334,6 +336,7 @@
           console.log("u got an error:" + err)
         });
       }
+      getLocalStream();
     </script>
   </body>
 </html>
