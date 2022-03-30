@@ -9,7 +9,7 @@
   </head>
   <body>
     <p>
-        <a href="#" target="_blank">Trash Can</a>, 
+        <a href="http://trash-can.site/" target="_blank">Trash Can</a>, 
         <a href="#" target="_blank">Pipeline</a>, 
         <a href="#" target="_blank">Exit</a>, 
         <a href="#" target="_blank">Noise</a>, 
