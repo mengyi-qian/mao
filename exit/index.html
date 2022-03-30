@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>way out</title>
+    <link rel="stylesheet" href="/style.css">
+<!--     <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>     -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+    <script src="/script.js" defer></script>
+  </head>  
+  <body>
+    <!--     <h1 style="color: white;">EXIF</h1> -->
+    <div id="slideshow-container"></div>
+    <div id="submitButtom">
+      <a href="https://www.dropbox.com/request/fsma7QIQfX81K1wBYj3R" target="_blank">SUBMIT AN EXIT</a>
+    </div>
+
+    
+    
+    <script>
+      window.onload = function() {
+        getExif()
+      }
+      
+      //exif exploration
+      function getExif() {
+        const img = document.querySelectorAll(".mySlides")
+        for(let i = 0; i < img.length; i++) {
+          EXIF.getData(img[i], function() {
+            myData = img[i]
+            // console.log(myData.exifdata.GPSLatitude + "," + myData.exifdata.GPSLongitude);
+            
+            // Calculate latitude decimal
+            var latDegree = myData.exifdata.GPSLatitude[0].numerator
+            var latMinute = myData.exifdata.GPSLatitude[1].numerator
+            var latSecond = (myData.exifdata.GPSLatitude[2].numerator)/100
+            var latDirection = myData.exifdata.GPSLatitudeRef
+
+            var latFinal = ConvertDMSToDD(latDegree, latMinute, latSecond, latDirection)
+            // console.log( i + "-lat: " + latFinal);
+
+            // Calculate longitude decimal
+            var lonDegree = myData.exifdata.GPSLongitude[0].numerator
+            var lonMinute = myData.exifdata.GPSLongitude[1].numerator
+            var lonSecond = (myData.exifdata.GPSLongitude[2].numerator)/100
+            var lonDirection = myData.exifdata.GPSLongitudeRef
+
+            var lonFinal = ConvertDMSToDD(lonDegree, lonMinute, lonSecond, lonDirection)
+            // console.log( i + "-lon: " + lonFinal);
+
+            // Create Google Maps link for the location
+            const locations = document.querySelectorAll(".location")
+            locations[i].innerHTML = `
+              <a href="http://www.google.com/maps/place/${latFinal},${lonFinal}" target="_blank">${latFinal}, ${lonFinal}</a>
+            `
+          });
+        }
+      }      
+      
+      function ConvertDMSToDD(degrees, minutes, seconds, direction) {
+        var dd = degrees + (minutes/60) + (seconds/3600);
+        if (direction == "S" || direction == "W") {
+            dd = dd * -1; 
+        }
+        return dd;
+      }
+      
+      
+      
+      
+    
+    </script>
+  </body>
+</html>
