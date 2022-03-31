@@ -10,11 +10,11 @@
   <body>
     <p>
         <a href="http://trash-can.site/" target="_blank">Trash Can</a>, 
-        <a href="pipeline">Pipeline</a>, 
-        <a href="exit" target="_blank">Exit</a>, 
-        <a href="noise" target="_blank">Noise</a>, 
-        <a href="cloud" target="_blank">Cloud</a>, 
-        <a href="refrigerator" target="_blank">Refrigerator</a>, 
+        <a href="https://churongmao.com/pipeline/" target="_blank">Pipeline</a>, 
+        <a href="https://churongmao.com/exit/" target="_blank">Exit</a>, 
+        <a href="https://churongmao.com/noise/" target="_blank">Noise</a>, 
+        <a href="https://churongmao.com/cloud/" target="_blank">Cloud</a>, 
+        <a href="https://churongmao.com/refrigerator/" target="_blank">Refrigerator</a>, 
         maochurong@gmail.com
     </p>
   </body>
