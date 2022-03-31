@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://essensessentials.bnag.cc/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="icon" href="http://essensessentials.bnag.cc/fav.png">
+<title>eSsEnSeSsEnTiaLs EsSeNsEsSeNtIaLs</title>
+<script src="./eSsEnSeSsEnTiaLs EsSeNsEsSeNtIaLs_files/jquery-latest.min.js" type="text/javascript"></script>
+<script src="./eSsEnSeSsEnTiaLs EsSeNsEsSeNtIaLs_files/jquery.lettering.js" type="text/javascript"></script>
+<link rel="stylesheet" href="./eSsEnSeSsEnTiaLs EsSeNsEsSeNtIaLs_files/jquery-ui.css">
+<script src="./eSsEnSeSsEnTiaLs EsSeNsEsSeNtIaLs_files/jquery-ui.min.js"></script>
+<style>
+    body{
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        background: black;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        font-size: 32px;
+        letter-spacing: .1em;
+        text-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+        color: white;
+    }
+    
+    ::selection {
+    background: none;
+    color: red;
+}
+::-moz-selection {
+    background: none;
+    color: red;
+}
+
+        
+.marquee {
+  height: 30px;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+    bottom: 0;
+    background: black;
+    z-index: 100;
+    color: white;
+    font-size: 20px;
+}
+
+.marquee div {
+  display: block;
+    height: 30px;
+    line-height: 34px;
+  width: 200%;
+  position: absolute;
+  overflow: hidden;
+  animation: marquee 10s linear infinite;
+}
+
+.marquee span {
+  float: left;
+  width: 50%;
+}
+
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+    
+    .navi{
+        position: absolute;
+        z-index: 99;
+        left: 40px;
+        top: 40px;
+        cursor: pointer;
+        font-size: 17px;
+    }
+    
+    .liste{
+        line-height: 130%;
+    }
+    
+    .title{
+        position: absolute;
+        left: 43%;
+        top: 40px;
+        z-index: 50;
+        -webkit-transform:rotate(-2deg);
+        text-align: center;
+        width: 200px;
+    }
+    
+    .overlay{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 50;
+    }
+    
+    .difference{
+        background: red;
+        mix-blend-mode: exclusion;
+    }
+    
+    .border{
+        text-shadow:0 0 10px rgba(0,0,0,0.6)}
+    }
+    
+    .a{
+        -webkit-transform:rotate(-3deg);
+        padding-left: 0.4em;
+    }
+    
+    .c{
+        -webkit-transform:rotate(1deg);
+    }
+    
+    .d{
+        -webkit-transform:rotate(-1deg);
+        padding-left: 0.7em;
+    }
+    
+    .d{
+        -webkit-transform:rotate(-1deg);
+        padding-left: 0.7em;
+    }
+    
+    span{display:inline-block;position:relative;}
+    
+    .char1{top: 6px;-webkit-transform:rotate(-3deg);}
+    .char2{top: 3px;-webkit-transform:rotate(2deg);}
+    .char3{top: 4px;-webkit-transform:rotate(-2deg);}
+    .char4{top: 1px;-webkit-transform:rotate(4deg);}
+    .char5{top: 5px;-webkit-transform:rotate(-2deg);}
+    .char6{top: 1px;-webkit-transform:rotate(1deg);}
+    
+    input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+    
+    /* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 1.95em;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: .8em; height: .8em;
+  border: 3px solid white;
+  background: none;
+    border-radius: 50%;
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: .02em; left: .2em;
+  font-size: 1.3em;
+  line-height: 0.8;
+  color: white;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}  
+    
+    /* Style inputs with type="text", select elements and textareas */
+input[type=text], input[type=email], select, textarea {
+    background: none;
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */  
+    border: none;
+    border-bottom: 3px solid white; /* Gray border */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+    
+    input[type=text], input[type=email], select, textarea + label{
+        font-size: 32px;
+    font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+    letter-spacing: .1em;
+    -webkit-transform:rotate(2deg);
+        color: white;
+    }
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 32px;
+    font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+    letter-spacing: .1em;
+    -webkit-transform:rotate(-3deg);
+    float: left;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+   
+}
+
+/* Add a background color and some padding around the form */
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+    
+    .pricelist{
+        position: absolute;
+        left: 350px;
+        top: 40px;
+        z-index: 500;
+        display: none;
+        font-size: 17px;
+        line-height: 130%;
+        -webkit-transform:rotate(-2deg);
+        
+    }
+    
+    .order{
+        position: absolute;
+        left: 300px;
+        top: 40px;
+        z-index: 500;
+        display: none;
+        
+    }
+    
+    .show-order{
+        position: absolute;
+        z-index: 99;
+        right: 60px;
+        bottom: 50%;
+        cursor: pointer;
+        -webkit-transform:rotate(-4deg);
+    }
+    
+    .close-order{
+        margin-left: 200px;
+        cursor: pointer;
+        -webkit-transform:rotate(4deg);
+    }
+    
+    .close-about{
+        cursor: pointer;
+        -webkit-transform:rotate(-4deg);
+    }
+    
+     .show-pricelist{
+        position: absolute;
+        z-index: 99;
+        left: 45%;
+        bottom: 60px;
+        cursor: pointer;
+        -webkit-transform:rotate(4deg);
+    }
+    
+    .hide-pricelist{
+        position: absolute;
+        left: 200px;
+        bottom: 50px;
+        cursor: pointer;
+        -webkit-transform:rotate(1deg);
+        font-size: 32px;
+        line-height: 130%;
+    }
+    
+    .show-about{
+        position: absolute;
+        z-index: 99;
+        right: 60px;
+        top: 60px;
+        cursor: pointer;
+        -webkit-transform:rotate(4deg);
+    }
+    
+    .about{
+        position: absolute;
+        left: 35%;
+        top: 150px;
+        z-index: 500;
+        display: none;
+        text-align: center;
+        line-height: 130%;
+    }
+    
+    div.element {
+        clear: both;
+        margin-bottom: 3px;
+    }
+    
+    .please{
+        position: absolute;
+        width: 500px;
+        display: block;
+        left: 80px;
+    }
+
+    
+    #myvideo{
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    }
+    
+    button{ 
+        z-index: 50;
+        position: absolute;
+        -webkit-appearance: none;
+        background: none;
+        border: none;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        font-size: 32px;
+        letter-spacing: .1em;
+        text-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+        cursor: pointer;
+        right: 50px;
+    }
+
+    
+    .playstop{
+        bottom: 50px;
+        -webkit-transform:rotate(-4deg);
+    }
+    
+    .play{
+        bottom: 100px;
+        -webkit-transform:rotate(2deg);
+    }
+    
+    .first {display: none;}
+    
+    /*
+    .blacki{
+        background: rgba(0,0,0,0.3);
+    }
+    */
+    
+
+    
+    #all:hover span{display: none;}
+    #all:hover:before {content:"oVeRvIeW"}
+    
+    #karaffe:hover span{display: none;}
+    #karaffe:hover:before {content:"kArAfFe"}
+    
+    #morph:hover span{display: none;}
+    #morph:hover:before {content:"mOrPh"}
+    
+    #eggcup:hover span{display: none;}
+    #eggcup:hover:before {content:"eGg cUp"}
+    
+    #sansandal:hover span{display: none;}
+    #sansandal:hover:before {content:"sAn sAnDaL"}
+    
+    #claymax:hover span{display: none;}
+    #claymax:hover:before {content:"cLaY mAx I+II"}
+    
+    #smellspoon:hover span{display: none;}
+    #smellspoon:hover:before {content:"sMeLl sPoOn"}
+    
+    #muuug:hover span{display: none;}
+    #muuug:hover:before {content:"mUuUg"}
+    
+    #ssspresso:hover span{display: none;}
+    #ssspresso:hover:before {content:"sSsPrEsSo"}
+    
+    #saladfingers:hover span{display: none;}
+    #saladfingers:hover:before {content:"sAlAd fInGeRs"}
+    
+    #dipfingers:hover span{display: none;}
+    #dipfingers:hover:before {content:"dIp fInGeRs"}
+    
+    #handfingers:hover span{display: none;}
+    #handfingers:hover:before {content:"bAcKsCrAtChEr"}
+    
+    #nosecup:hover span{display: none;}
+    #nosecup:hover:before {content:"nOsE cUp"}
+    
+    #eggcup2:hover span{display: none;}
+    #eggcup2:hover:before {content:"eGg cUp II"}
+    
+    #courtney:hover span{display: none;}
+    #courtney:hover:before {content:"cOuRtNeY"}
+    
+    #toungespoon:hover span{display: none;}
+    #toungespoon:hover:before {content:"tOuNgE sPoOn"}
+    
+    #doubletoungespoon:hover span{display: none;}
+    #doubletoungespoon:hover:before {content:"dOuBlE tOuNgE sPoOn"}
+    
+    #schlagring:hover span{display: none;}
+    #schlagring:hover:before {content:"sChLaGrInG"}
+    
+    #sushisquare:hover span{display: none;}
+    #sushisquare:hover:before {content:"sUsHi sQuArE"}
+    
+    #saltpepper:hover span{display: none;}
+    #saltpepper:hover:before {content:"sAlT aNd pEpPeR"}
+    
+    #mickey:hover span{display: none;}
+    #mickey:hover:before {content:"mIcKeY"}
+    
+    #acrobaticsip:hover span{display: none;}
+    #acrobaticsip:hover:before {content:"aCrObAtIc sIp"}
+    
+    #eggshakers:hover span{display: none;}
+    #eggshakers:hover:before {content:"eGg sHaKeRs"}
+    
+    #marimba:hover span{display: none;}
+    #marimba:hover:before {content:"mArImBa"}
+    
+    #chickennugget:hover span{display: none;}
+    #chickennugget:hover:before {content:"cHiCkEn nUgGeT"}
+    
+    #bong:hover span{display: none;}
+    #bong:hover:before {content:"bOnG"}
+  
+    
+
+</style>
+</head>
+<body>
+    
+    
+    <div class="show-order"><span>BuY</span></div>
+    
+    
+    <div class="order" style="display: block;">
+        <!--
+    <input type="checkbox" id="item1" />
+    <label for="item1"></label>
+        <div class="element"></div>
+    <input type="checkbox" id="item2" />
+    <label for="item2"></label>
+        <div class="element"></div>
+    <input type="checkbox" id="item3" />
+    <label for="item3"></label>
+       <div class="element"></div>
+    <input type="checkbox" id="item4" />
+    <label for="item4"></label>
+      <div class="element"></div>
+    <input type="checkbox" id="item5" />
+    <label for="item5"></label>
+        <div class="element"></div>
+    <input type="checkbox" id="item6" />
+    <label for="item6"></label>
+        <div class="element"></div>
+    <input type="checkbox" id="item7" />
+    <label for="item7"></label>
+        <div class="element"></div>
+    <input type="checkbox" id="item8" />
+    <label for="item8"></label>
+        <br>
+    -->
+        
+        <div class="please">
+            <span style="-webkit-transform:rotate(1deg)">
+        Please hit us up for further information.</span><br><br>
+            <span style="-webkit-transform:rotate(-1deg)">
+                We will send you an email with prices and paying conditions.</span><br><br>
+             <form class="form" action="https://formspree.io/service@bnag.cc" method="POST">
+    <input type="text" name="name" value="NaMe"><br><br>
+    <input type="email" name="_replyto" value="EmAiL"><br><br>
+    <input type="submit" value="SeNd">
+</form>
+            <div class="close-order">ClOsE</div>
+        </div>
+        
+        </div>
+    
+    <div class="overlay"></div>
+    
+    <div class="title" style="display: none;"><span id="role">EsSeNs EsSeNtIaLs</span></div>
+    
+
+    
+    <video id="myvideo" width="100%" height="100%" autobuffer="" autoplay="" loop="" muted="">
+    <source src="video.mp4" type="video/mp4">
+    <source src="video.ogv" type="video/ogg">
+    Your browser does not support HTML5 video.</video>
+
+<audio id="sound1" autoplay="">
+    <source src="audio.ogg" type="audio/ogg">
+</audio>
+
+<button class="play" id="btn1"><span>MuTe</span></button>
+
+<button class="playstop second" onclick="pauseVid()" type="button" style="display: none;">
+    PaUsE</button>
+  <button class="playstop first" onclick="playVid()" type="button" style="display: block;">
+    PlAy</button>
+
+<div class="navi liste">
+        <div class="float jumping a" id="all"><span>OvErViEw</span></div><br>
+        <div class="float jumping b" id="karaffe"><span>KaRaFfE</span></div>
+        <div class="float jumping c" id="morph"><span>MoRpH</span></div>
+        <div class="float jumping d" id="eggcup"><span>EgG CuP</span></div>
+        <div class="float jumping a" id="sansandal"><span>SaN SaNdAl</span></div>
+        <div class="float jumping b" id="claymax"><span>ClAy MaX I+II</span></div>
+        <div class="float jumping c" id="smellspoon"><span>SmElL SpOoN</span></div>
+        <div class="float jumping d" id="muuug"><span>MuUuG</span></div>
+        <div class="float jumping a" id="ssspresso"><span>SsSpReSsO</span></div>
+        <div class="float jumping b" id="saladfingers"><span>SaLaD FiNgErS</span></div>
+        <div class="float jumping c" id="dipfingers"><span>DiP FiNgErS</span></div>
+        <div class="float jumping d" id="handfingers"><span>BaCkScRaTcHeR</span></div>
+        <div class="float jumping e" id="nosecup"><span>NoSe CuP</span></div>
+        <div class="float jumping a" id="eggcup2"><span>EgG CuP II</span></div>
+        <div class="float jumping b" id="courtney"><span>CoUrTnEy</span></div>
+        <div class="float jumping c" id="toungespoon"><span>ToUnGe SpOoN</span></div>
+        <div class="float jumping d" id="doubletoungespoon"><span>DoUbLe ToUnGe SpOoN</span></div>
+        <div class="float jumping a" id="schlagring"><span>ScHlAgRiNg</span></div>
+        <div class="float jumping b" id="sushisquare"><span>SuShI SqUaRe</span></div>
+        <div class="float jumping c" id="saltpepper"><span>SaLt AnD PePpEr</span></div>
+        <div class="float jumping d" id="mickey"><span>MiCkEy</span></div>
+        <div class="float jumping e" id="acrobaticsip"><span>AcRoBaTiC SiP</span></div>
+        <div class="float jumping a" id="eggshakers"><span>EgG ShAkErS</span></div>
+        <div class="float jumping b" id="marimba"><span>MaRiMbA</span></div>
+        <div class="float jumping c" id="chickennugget"><span>ChIcKeN NuGgEt</span></div>
+        <div class="float jumping d" id="bong"><span>BoNg</span></div>
+</div>
+    
+    <div class="show-about">
+    AbOuT
+    </div>
+    
+    <div class="about" style="display: none;">
+        <span style="-webkit-transform:rotate(4deg);">is</span><br><br>
+        <span style="-webkit-transform:rotate(1deg);">Oliver-Selim Boualam</span><br>
+        <span style="-webkit-transform:rotate(-2deg);">Lisa Ertel</span><br>
+        <span style="-webkit-transform:rotate(1deg);">Lukas Marstaller</span><br>
+        <span style="-webkit-transform:rotate(-1deg);">Felix Plachtzik</span><br>
+        Marcel Strauss<br>
+        <span style="-webkit-transform:rotate(3deg);">Jannis Zell</span><br><br>
+        <div class="close-about">ClOsE</div>
+    </div>
+    
+    <div class="show-pricelist">
+    PrIcEs
+    </div>
+    
+    <div class="pricelist" style="display: none;">
+        <br><br>
+        345€<br>
+        58€<br>
+        60€<br>
+        160€<br>
+        250€ / 320€<br>
+        15€<br>
+        65€<br>
+        25€<br>
+        60€, Set: 100€<br>
+        15€ – 25€<br>
+        75€<br>
+        25€ – 50€<br>
+        20€<br>
+        n.a.<br>
+        25€<br>
+        130€<br>
+        n.a.<br>
+        60€<br>
+        90€<br>
+        S: 20€, L: 30€<br>
+        290€<br>
+        18€<br>
+        n.a.<br>
+        n.a.<br>
+        420€
+        
+        <div class="hide-pricelist">HiDe</div>
+    </div>
+
+
+    <!--
+    
+    <div class="marquee">
+  <div>
+    <span>Visit us at EUNIQUE Fair, 19. – 21.05.2017, Messe Karlsruhe / dm-arena</span>
+    <span>Visit us at EUNIQUE Fair, 19. – 21.05.2017, Messe Karlsruhe / dm-arena</span>
+  </div>
+</div>
+
+-->
+
+
+    <script>
+var myvideo = document.getElementById('myvideo'),
+    playbutton = document.getElementById('playme'),
+    jumpall = document.getElementById('all');
+    jumplink = document.getElementById('karaffe');
+    jumplink2 = document.getElementById('morph');
+    jumplink3 = document.getElementById('eggcup');
+    jumplink4 = document.getElementById('sansandal');
+    jumplink5 = document.getElementById('claymax');
+    jumplink6 = document.getElementById('smellspoon');
+    jumplink7 = document.getElementById('muuug');
+    jumplink8 = document.getElementById('ssspresso');
+    jumplink9 = document.getElementById('saladfingers');
+    jumplink10 = document.getElementById('dipfingers');
+    jumplink11 = document.getElementById('handfingers');
+    jumplink12 = document.getElementById('nosecup');
+    jumplink13 = document.getElementById('eggcup2');
+    jumplink14 = document.getElementById('courtney');
+    jumplink15 = document.getElementById('toungespoon');
+    jumplink16 = document.getElementById('doubletoungespoon');
+    jumplink17 = document.getElementById('schlagring');
+    jumplink18 = document.getElementById('sushisquare');
+    jumplink19 = document.getElementById('saltpepper');
+    jumplink20 = document.getElementById('mickey');
+    jumplink21 = document.getElementById('acrobaticsip');
+    jumplink22 = document.getElementById('eggshakers');
+    jumplink23 = document.getElementById('marimba');
+    jumplink24 = document.getElementById('chickennugget');
+    jumplink25 = document.getElementById('bong');
+        
+jumpall.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 0;
+    myvideo.play();
+}, false);
+
+jumplink.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 17;
+    myvideo.play();
+}, false);
+        
+jumplink2.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 26;
+    myvideo.play();
+}, false);
+        
+jumplink3.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 33;
+    myvideo.play();
+}, false);
+        
+jumplink4.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 45;
+    myvideo.play();
+}, false);
+        
+jumplink5.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 63;
+    myvideo.play();
+}, false);
+        
+jumplink6.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 74;
+    myvideo.play();
+}, false);
+        
+jumplink7.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 81;
+    myvideo.play();
+}, false);
+        
+jumplink8.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 96;
+    myvideo.play();
+}, false);
+
+jumplink9.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 111;
+    myvideo.play();
+}, false);
+        
+jumplink10.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 128;
+    myvideo.play();
+}, false);
+        
+jumplink11.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 156;
+    myvideo.play();
+}, false);
+        
+jumplink12.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 163;
+    myvideo.play();
+}, false);
+        
+jumplink13.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 192;
+    myvideo.play();
+}, false);
+        
+jumplink14.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 197;
+    myvideo.play();
+}, false);
+        
+jumplink15.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 204;
+    myvideo.play();
+}, false);
+        
+jumplink16.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 219;
+    myvideo.play();
+}, false);
+        
+jumplink17.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 234;
+    myvideo.play();
+}, false);
+        
+jumplink18.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 247;
+    myvideo.play();
+}, false);
+        
+jumplink19.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 255;
+    myvideo.play();
+}, false);
+        
+jumplink20.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 277;
+    myvideo.play();
+}, false);
+        
+jumplink21.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 294;
+    myvideo.play();
+}, false);
+        
+jumplink22.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 308;
+    myvideo.play();
+}, false);
+        
+jumplink23.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 313;
+    myvideo.play();
+}, false);
+        
+jumplink24.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 319;
+    myvideo.play();
+}, false);
+        
+jumplink25.addEventListener("click", function (event) {
+    event.preventDefault();
+    myvideo.play();
+    myvideo.pause();
+    myvideo.currentTime = 327;
+    myvideo.play();
+}, false);
+
+    </script>
+
+<!--
+<script>
+$('.float').hover(function(){     
+        $('.overlay').addClass('difference');
+    },     
+    function(){    
+        $('.overlay').removeClass('difference');
+    });
+</script>
+-->
+    
+    <script>
+$('.float').hover(function(){     
+        $('.overlay').addClass('blacki');
+    },     
+    function(){    
+        $('.overlay').removeClass('blacki');
+    });
+</script>
+<script>
+$(".close-order").click(function(){
+    $(".order").hide();
+    $(".title").show();
+});
+
+$(".show-order").click(function(){
+    $(".order").show();
+    $(".pricelist").hide();
+    $(".title").hide();
+    $(".about").hide();
+});
+</script>
+    <script>
+$(".show-pricelist").click(function(){
+    $(".pricelist").show();
+    $(".title").show();
+    $(".order").hide();
+    $(".about").hide();
+});
+</script> 
+<script>
+$(".hide-pricelist").click(function(){
+    $(".pricelist").hide();
+    $(".title").show();
+});
+</script>
+<script>
+$(".show-about").click(function(){
+    $(".pricelist").hide();
+    $(".order").hide();
+    $(".about").show();
+    $(".title").show();
+});
+</script>
+<script>
+$(".close-about").click(function(){
+    $(".about").hide();
+});
+</script>
+<script>
+jQuery(function ($) {
+    var roles = ['eSsEnS eSsEnTiAls', 'EsSeNs EsSeNtIaLs', 'eSsEnS eSsEnTiAls'];
+    //used to determine which is the next roles to be displayed
+    var counter = 0;
+    var $role = $('#role')
+    //repeat the passed function at the specified interval - it is in milliseconds
+    setInterval(function () {
+        //display the role and increment the counter to point to next role
+        $role.text(roles[counter++]);
+        //if it is the last role in the array point back to the first item
+        if (counter >= roles.length) {
+            counter = 0;
+        }
+    }, 1000)
+})
+</script>
+<script>
+$('.play').click(function(){
+    var $this = $(this);
+    var id = $this.attr('id').replace(/btn/, '');
+    $this.toggleClass('active');
+    if($this.hasClass('active')){
+        $this.text('AuDiO'); 
+           $('audio[id^="sound"]')[id-1].pause();     
+    } else {
+        $this.text('MuTe');
+        $('audio[id^="sound"]')[id-1].play();
+    }
+});
+</script>
+<script>
+// get video element id
+var vidClip = document.getElementById("myvideo"); 
+
+// play video event
+function playVid() { 
+    myvideo.play();
+} 
+
+// pause video event
+function pauseVid() { 
+  myvideo.pause(); 
+}
+
+// toggle button class on click
+$('.playstop').on('click', function() {
+  $('.first, .second').toggle();
+});
+
+// toggle button class when finished
+vidClip.onended = function(e) {
+  $('.first, .second').toggle();
+};
+</script>
+
+<!--
+<script>
+var $dropDiv = $('.order');
+$('.show-order').on('click', function() {
+    // get position of the element we clicked on
+    var offset = $(this).offset();
+    
+    // get width/height of click element
+    var h = $(this).outerHeight();
+    var w = $(this).outerWidth();
+    
+    // get width/height of drop element
+    var dh = $dropDiv.outerHeight();
+    var dw = $dropDiv.outerWidth();
+    
+    // determine middle position
+    var initLeft = offset.left + ((w/2) - (dw/2));
+
+    // animate drop
+    $dropDiv.css({
+            left: initLeft,
+            top: $(window).scrollTop() - dh,
+            opacity: 0,
+            display: 'block'
+        }).animate({
+            left: initLeft,
+            top: offset.top - dh,
+            opacity: 1
+        }, 3000, 'easeOutBounce');
+});
+</script>
+-->
+
+</body></html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>window</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="assets/jquery-latest.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="assets/jquery-ui.css">
+	<script src="assets/jquery-ui.min.js"></script>
+
+    <style>
+    	@font-face {
+ 			 font-family: myfont;
+ 			 src: url(myfont.ttf);
+		}
+    	body{
+        	overflow: hidden;
+        	padding: 0;
+        	margin: 0;
+        	background: black;
+    	}
+
+    	body, button {
+    		font-family: myfont, Helvetica, Arial, sans-serif;
+        	font-weight: bold;
+        	font-size: 40px;
+        	letter-spacing: .1em;
+        	text-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+        	color: white;
+    	}
+
+    	video {
+    		object-fit: cover;
+    		object-position: 50% 50%;
+    		width: 100vw;
+    		height: 100vh;
+		}
+
+		#myVideo {
+		  	-webkit-transform: translateX(-50%) translateY(-50%);
+  		 	-moz-transform: translateX(-50%) translateY(-50%);
+		    -ms-transform: translateX(-50%) translateY(-50%);
+		    -o-transform: translateX(-50%) translateY(-50%);
+		    transform: translateX(-50%) translateY(-50%);
+		    position: absolute;
+		    top: 50vh;
+		    left: 50vw;
+		    min-width: 100vw;
+		    min-height: 100vh;
+    	}
+
+    	button{
+    		z-index: 50;
+    		cursor: pointer;
+    		position: absolute;
+    		top: 50vh;
+    		-webkit-transform: translateY(-50%);
+    		width: 150px;
+    		height: 80px;
+    		background: none;
+    		display: block;
+    		border: 3px solid white;
+    		border-radius: 50%;
+    		padding: 0px 0px 5px 5px;
+    		outline: none;
+    	}
+
+    	#open {
+    		left: 50px;
+    	}
+    
+    	#close {
+    		right: 50px;
+    		display: none;
+    	}
+
+    	.navi{
+        	position: absolute;
+        	z-index: 99;
+        	left: 50px;
+        	top: 50vh;
+        	-webkit-transform: translateY(-50%);
+        	cursor: pointer;
+        	font-size: 20px;
+        	line-height: 130%;
+        	display: none;
+        	text-align: center;
+    	}
+
+    	.show-about{
+        	position: absolute;
+        	z-index: 99;
+        	right: 60px;
+        	bottom: 60px;
+        	cursor: pointer;
+            animation: glow 2s ease-in-out infinite alternate;
+    	}
+
+    	.about{
+        	position: absolute;
+        	z-index: 500;
+        	text-align: center;
+        	line-height: 130%;
+        	top: 50vh;
+		    left: 50vw;
+        	-webkit-transform: translateX(-50%) translateY(-50%);
+  		 	-moz-transform: translateX(-50%) translateY(-50%);
+		    -ms-transform: translateX(-50%) translateY(-50%);
+		    -o-transform: translateX(-50%) translateY(-50%);
+		    transform: translateX(-50%) translateY(-50%);
+		    display: none; 	
+		    /*-webkit-animation: glow 2s ease-in-out infinite alternate;
+ 			-moz-animation: glow 2s ease-in-out infinite alternate;
+  			animation: glow 2s ease-in-out infinite alternate;*/	
+            -webkit-animation: fade 4s forwards ease-in-out 1 ;
+            -moz-animation: fade 4s forwards ease-in-out 1 ;
+            animation: fade 4s forwards ease-in-out 1 ; 
+    	}
+
+    	@-webkit-keyframes glow {
+ 			 from { text-shadow: 0 0 0px white; }
+  			   to { text-shadow: 0 0 20px white; }
+            }
+
+         @-webkit-keyframes fade {
+             0% { opacity: 0; }
+             40% { opacity: 1; }
+             60% { opacity: 1; }
+             100% { opacity: 0; }
+           }
+
+
+    </style>
+    <!--    google's hosted jquery library  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <video id="myvideo" autobuffer=""> 
+    	<source src="https://cdn.glitch.me/2eeebac4-8165-4645-991b-b15cbd712187/video.mp4" type="video/mp4">
+    </video>
+
+    <button class="playstop" id="open" onclick="playVid()" type="button">open</button>
+    <button class="playstop" id="close" onclick="playVid()" type="button" >close</button>
+
+
+
+    <div class="navi">
+    	<div id="eggs"><span>eggs</span></div>
+        <div id="beers"><span>beers</span></div>
+        <div id="sauerkraut"><span>sauerkraut</span></div>
+        <div id="radish"><span>radish</span></div>
+        <div id="toufu"><span>toufu</span></div>
+        <div id="milk"><span>milk</span></div>
+        <div id="brusselsSprout"><span>brussels sprout</span></div>
+        <div id="tomatoes"><span>tomatoes</span></div>
+        <div id="snowPeas"><span>snow peas</span></div>
+        <div id="spinach"><span>spinach</span></div>
+        <div id="greenBeans"><span>green beans</span></div>
+        <div id="cabbage"><span>cabbage</span></div>
+        <div id="shallot"><span>shallot</span></div>
+        <div id="cucumber"><span>cucumber</span></div>
+        <div id="kale"><span>kale</span></div>
+        <div id="onions"><span>onions</span></div>
+        <div id="ginger"><span>ginger</span></div>
+        <div id="grapefruit"><span>grapefruit</span></div>
+        <div id="pears"><span>pears</span></div>
+        <div id="apples"><span>apples</span></div>
+	</div>
+
+	<!-- <div class="show-about">Stare</div> -->
+	<div class="show-about" id="pause">stare</div>
+    
+    <div class="about" style="display: none;">
+        <!-- <span id="line1">open the door</span><br>
+        <span id="line2">even though</span><br>
+        <span id="line3">there's nothing new inside</span><br>
+        <span id="line4">under the light</span><br>    
+        <span id="line5">things are presented for you</span><br>
+        <span id="line6">frozen in time</span><br>
+        <span id="line7">Enjoy</span><br>
+        <span id="line8">stare at them for a while</span> -->
+
+        <div id="line1">Open the door</div>
+        <div id="line2">even though there's</div>
+        <div id="line3">nothing new inside</div>
+        <div id="line4">Under the light</div>
+        <div id="line5">things are presented for you</div>
+        <div id="line6">frozen in time</div>
+        <div id="line7">Enjoy</div>
+        <div id="line8">stare at them for a while</div>
+    </div>
+
+
+    <script>
+	var myvideo = document.getElementById('myvideo'),
+    	playbutton = document.getElementById('playme'),
+    	jumplinkClose = document.getElementById('close');
+    	jumplinkOpen = document.getElementById('open');
+    	jumplink1 = document.getElementById('eggs');
+    	jumplink2 = document.getElementById('beers');
+    	jumplink3 = document.getElementById('sauerkraut');
+    	jumplink4 = document.getElementById('radish');
+    	jumplink5 = document.getElementById('toufu');
+    	jumplink6 = document.getElementById('milk');
+    	jumplink7 = document.getElementById('brusselsSprout');
+    	jumplink8 = document.getElementById('tomatoes');
+    	jumplink9 = document.getElementById('snowPeas');
+    	jumplink10 = document.getElementById('spinach');
+    	jumplink11 = document.getElementById('greenBeans');
+    	jumplink12 = document.getElementById('cabbage');
+    	jumplink13 = document.getElementById('shallot');
+    	jumplink14 = document.getElementById('cucumber');
+    	jumplink15 = document.getElementById('kale');
+    	jumplink16 = document.getElementById('onions');
+    	jumplink17 = document.getElementById('ginger');
+    	jumplink18 = document.getElementById('grapefruit');
+    	jumplink19 = document.getElementById('pears');
+    	jumplink20 = document.getElementById('apples');
+
+
+	jumplinkClose.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 292;
+    	myvideo.play();
+	}, false);
+
+	jumplinkOpen.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 0;
+    	myvideo.play();
+	}, false);
+
+	jumplink1.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 18;
+    	myvideo.play();
+	}, false);
+
+	jumplink2.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 28;
+    	myvideo.play();
+	}, false);
+
+	jumplink3.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 35;
+    	myvideo.play();
+	}, false);
+
+	jumplink4.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 44;
+    	myvideo.play();
+	}, false);
+
+	jumplink5.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 59;
+    	myvideo.play();
+	}, false);
+
+	jumplink6.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 75;
+    	myvideo.play();
+	}, false);
+
+	jumplink7.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 81;
+    	myvideo.play();
+	}, false);
+
+	jumplink8.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 93;
+    	myvideo.play();
+	}, false);
+
+	jumplink9.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 106;
+    	myvideo.play();
+	}, false);
+
+	jumplink10.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 117;
+    	myvideo.play();
+	}, false);
+
+	jumplink11.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 130;
+    	myvideo.play();
+	}, false);
+
+	jumplink12.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 142;
+    	myvideo.play();
+	}, false);
+
+	jumplink13.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 171;
+    	myvideo.play();
+	}, false);
+
+	jumplink14.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 185;
+    	myvideo.play();
+	}, false);
+
+	jumplink15.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 196;
+    	myvideo.play();
+	}, false);
+
+	jumplink16.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 217;
+    	myvideo.play();
+	}, false);
+
+	jumplink17.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 236;
+    	myvideo.play();
+	}, false);
+
+	jumplink18.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 260;
+    	myvideo.play();
+	}, false);
+
+	jumplink19.addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 266;
+    	myvideo.play();
+	}, false);
+
+	jumplink20 .addEventListener("click", function (event) {
+	    event.preventDefault();
+    	myvideo.play();
+    	myvideo.pause();
+    	myvideo.currentTime = 272;
+    	myvideo.play();
+	}, false);
+
+    </script>
+
+    <script>
+	// $(".show-about").hover(function(){
+ //    	$(".about").show(); myvideo.pause();
+ //    }, function() {
+ //    	$(".about").hide(); myvideo.play();
+	// });
+
+	$(".show-about" ).hover(function() {
+    $(".about").fadeIn("slow"); myvideo.pause();
+     }, function() {
+    	$(".about").fadeOut("slow"); myvideo.play();
+  });
+
+
+	
+
+	</script>
+
+    <script>
+	// get video element id
+	var vidClip = document.getElementById("myvideo"); 
+	
+	// play video event
+	function playVid() { 
+	    myvideo.play();
+	} 
+	
+	// pause video event
+	function pauseVid() { 
+	  myvideo.pause(); 
+	}
+
+	function playPause() { 
+	  if (myVideo.paused) 
+  	  myVideo.play(); 
+	  else 
+  	  myVideo.pause(); 
+	} 
+
+
+	// toggle button class on click
+	$('.playstop').on('click', function() {
+	  $('#open, #close, .navi').toggle();
+	});
+
+	
+	// toggle button class when finished
+	// vidClip.onended = function(e) {
+	//   $('#open, #close').toggle();
+	// };
+	</script>
+
+  </body>
+
+
+</html>
