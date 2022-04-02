@@ -1,3 +1,4 @@
+/* GLOBAL */
 :root {
     --text-color: #000000;
     --bg-color: #FFFFFF;
@@ -15,8 +16,13 @@ html {
     box-sizing: border-box;
     font-family: 'Pasta Regular', 'Arial', 'Helvetica', sans-serif;
     font-size: 16pt;
-    line-height: 1.2;
+    line-height: 1.25;
     -webkit-font-smoothing: antialiased;
+}
+body {
+    overflow: scroll;
+    height: 100vh;
+    /* background-color: #FFFFFF; */
 }
 ul, li, p, a, span {
     color: inherited;
@@ -24,14 +30,6 @@ ul, li, p, a, span {
 }
 ul, li {
     list-style: none;
-}
-img::selection {
-    background-color: transparent;
-}
-body {
-    overflow: scroll;
-    height: 100vh;
-    /* background-color: #FFFFFF; */
 }
 a {
     color: inherit;
@@ -51,7 +49,7 @@ a:hover {
 header {
     position: fixed;
     top: 0;
-    padding: 10px;
+    padding: .5rem;
     z-index: 99;
     color: var(--text-color);
     /* mix-blend-mode: difference; */
@@ -62,6 +60,7 @@ header ul.about {
     justify-content: space-between;
     column-gap: 2rem;
     margin-bottom: .5rem;
+    padding-right: .5rem;
 }
 header ul.about * {
     width: auto;
@@ -107,7 +106,7 @@ main.project-container .video-wrap p {
     position: absolute;
     bottom: 0;
     left: 0;
-    margin: 10px;
+    margin: .5rem;
 }
 
 
@@ -129,6 +128,17 @@ span::selection {
     color: var(--text-color-dark-mode);
     background-color: var(--bg-color-dark-mode);
 }
+br::selection {
+    background-color: transparent;
+}
+img,video {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none;
+}
 
 /* DARK MODE */
 header.dark-mode {
@@ -145,4 +155,9 @@ main.dark-mode {
 .dark-mode span::selection {
     color: var(--text-color);
     background-color: var(--bg-color);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar-track {
+    background-color: transparent;
 }
