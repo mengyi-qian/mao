@@ -107,22 +107,24 @@ function renderChannel(slug) {
                                         <div class="cover-img img-wrap">
                                             <img src="${block.image.large.url}" />
                                             ${(() => {
-                                                if (block.description != null) {
+                                                if (block.description !== null) {
                                                     let text = block.description.split("]")[0].replace('[', '')
                                                     let link = block.description.split("]")[1].replace('(', '').replace(')', '')
+                                                    console.log(link)
                                                     return `<p><a href="${link}" target="_blank">${text}</a></p>`
                                                 }
                                             })()}
                                         </div>
                                         `
-                                    } else {
+                                    } else if (block.position > 2) {
                                         return `
                                         <div class="img-wrap">
                                             <img src="${block.image.large.url}" />
                                             ${(() => {
-                                                if (block.description != null) {
+                                                if (block.description !== null) {
                                                     let text = block.description.split("]")[0].replace('[', '')
                                                     let link = block.description.split("]")[1].replace('(', '').replace(')', '')
+                                                    console.log(link)
                                                     return `<p><a href="${link}" target="_blank">${text}</a></p>`
                                                 }
                                             })()}
@@ -149,8 +151,11 @@ function renderChannel(slug) {
                                             <source src="${block.attachment.url}" type="video/mp4">
                                         </video>
                                         ${(() => {
-                                            if (block.description != null) {
-                                                return `${block.description_html}`
+                                            if (block.description !== null) {
+                                                let text = block.description.split("]")[0].replace('[', '')
+                                                let link = block.description.split("]")[1].replace('(', '').replace(')', '')
+                                                console.log(link)
+                                                return `<p><a href="${link}" target="_blank">${text}</a></p>`
                                             }
                                         })()}
                                     </div>
