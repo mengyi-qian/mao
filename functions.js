@@ -47,11 +47,10 @@ function renderAllChannels() {
             nav.addEventListener('mouseout', () => {
                 document.querySelector('article.description').style.display = 'none'
             })
-        })
 
-        let externalLinks = document.querySelector('div.img-wrap > p > a')
-        externalLinks.forEach(element => element.setAttribute("target", "_blank"))
-    
+            let externalLinks = document.querySelector('div.img-wrap > p > a')
+            externalLinks.forEach(element => element.setAttribute("target", "_blank"))
+        })
 }
 
 
