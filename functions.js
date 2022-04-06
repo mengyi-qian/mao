@@ -34,8 +34,6 @@ function renderAllChannels() {
                     window.scrollTo(0, 0)
                     let channelSlug = link.id
                     renderChannel(channelSlug)
-                    let externalLinks = document.querySelector('div.img-wrap > p > a')
-                    externalLinks.forEach(element => element.setAttribute("target", "_blank"))
                 })
             }
 
@@ -49,6 +47,12 @@ function renderAllChannels() {
             nav.addEventListener('mouseout', () => {
                 document.querySelector('article.description').style.display = 'none'
             })
+
+            let externalLinks = document.querySelector('div.img-wrap > p > a')
+            if (externalLinks != null) {
+                externalLinks.forEach(element => element.setAttribute("target", "_blank"))
+            }
+            
 
             
         })
@@ -122,6 +126,7 @@ function renderChannel(slug) {
                                             <img src="${block.image.large.url}" />
                                             ${(() => {
                                                 if (block.description != null || block.description !== "") {
+                                                    console.log(block.description_html)
                                                     return `${block.description_html}`
                                                 }
                                             })()}
