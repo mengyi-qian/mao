@@ -114,6 +114,8 @@ function renderChannel(slug) {
                                                     let link = block.description.split("]")[1].replace('(', '').replace(')', '')
                                                     console.log(link)
                                                     return `<p><a href="${link}" target="_blank">${text}</a></p>`
+                                                } else {
+                                                    return ''
                                                 }
                                             })()}
                                         </div>
@@ -130,6 +132,8 @@ function renderChannel(slug) {
                                                     let link = block.description.split("]")[1].replace('(', '').replace(')', '')
                                                     console.log(link)
                                                     return `<p><a href="${link}" target="_blank">${text}</a></p>`
+                                                } else {
+                                                    return ''
                                                 }
                                             })()}
                                         </div>
@@ -162,6 +166,8 @@ function renderChannel(slug) {
                                                 let link = block.description.split("]")[1].replace('(', '').replace(')', '')
                                                 console.log(link)
                                                 return `<p><a href="${link}" target="_blank">${text}</a></p>`
+                                            } else {
+                                                return ''
                                             }
                                         })()}
                                     </div>
