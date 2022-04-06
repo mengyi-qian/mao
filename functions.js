@@ -22,7 +22,7 @@ function renderAllChannels() {
                     `;
                 })
                 .join("")}
-            `;
+            `
 
             let nav = document.querySelector('p.nav')
             let links = document.querySelectorAll('p.nav a')
@@ -48,8 +48,7 @@ function renderAllChannels() {
                 document.querySelector('article.description').style.display = 'none'
             })
 
-            let externalLinks = document.querySelector('div.img-wrap > p > a')
-            externalLinks.forEach(element => element.setAttribute("target", "_blank"))
+            
         })
 }
 
@@ -165,6 +164,9 @@ function renderChannel(slug) {
             })
             .join("")}
         `
+        
+        let externalLinks = document.querySelector('div.img-wrap > p > a')
+            externalLinks.forEach(element => element.setAttribute("target", "_blank"))
     })
 
     
