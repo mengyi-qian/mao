@@ -77,7 +77,6 @@ function renderDescription(slug) {
 
 
 
-
 function renderChannel(slug) {
 
     let contentsURL = `https://api.are.na/v2/channels/${slug}?sort=position`;
@@ -108,11 +107,8 @@ function renderChannel(slug) {
                                     <img src="${block.image.large.url}" />
                                     ${(() => {
                                         if (block.description.length > 0) {
-                                            console.log(block.description)
                                             let text = block.description.split("]")[0].replace('[', '')
-                                            console.log(block.id)
                                             let link = block.description.split("]")[1].replace('(', '').replace(')', '')
-                                            console.log(link)
                                             return `<p><a href="${link}" target="_blank">${text}</a></p>`
                                         }
                                     })()}
@@ -124,11 +120,8 @@ function renderChannel(slug) {
                                     <img src="${block.image.large.url}" />
                                     ${(() => {
                                         if (block.description.length > 0) {
-                                            console.log(block.description)
                                             let text = block.description.split("]")[0].replace('[', '')
-                                            console.log(block.id)
                                             let link = block.description.split("]")[1].replace('(', '').replace(')', '')
-                                            console.log(link)
                                             return `<p><a href="${link}" target="_blank">${text}</a></p>`
                                         }
                                     })()}
@@ -136,41 +129,33 @@ function renderChannel(slug) {
                                 `
                             };
                         case "Attachment":
-                            return `
-                            ${(() => {
-                                if (block.description === "small") {
-                                    return `
-                                    <div class="video-wrap">
-                                        <video class="contain" loop muted autoplay playsinline>
-                                            <source src="${block.attachment.url}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                    `
-                                } else {
-                                    return `
-                                    <div class="video-wrap">
-                                        <video class="cover" loop muted autoplay playsinline>
-                                            <source src="${block.attachment.url}" type="video/mp4">
-                                        </video>
-                                        ${(() => {
-                                            if (block.description.length > 0) {
-                                                console.log(block.description)
-                                                let text = block.description.split("]")[0].replace('[', '')
-                                                console.log(block.id)
-                                                let link = block.description.split("]")[1].replace('(', '').replace(')', '')
-                                                console.log(link)
-                                                return `<p><a href="${link}" target="_blank">${text}</a></p>`
-                                            }
-                                        })()}
-                                    </div>
-                                    `
-                                }
-                            })()}
-                            `
+                            if (block.description === "small") {
+                                return `
+                                <div class="video-wrap">
+                                    <video class="contain" loop muted autoplay playsinline>
+                                        <source src="${block.attachment.url}" type="video/mp4">
+                                    </video>
+                                </div>
+                                `
+                            } else {
+                                return `
+                                <div class="video-wrap">
+                                    <video class="cover" loop muted autoplay playsinline>
+                                        <source src="${block.attachment.url}" type="video/mp4">
+                                    </video>
+                                    ${(() => {
+                                        if (block.description.length > 0) {
+                                            let text = block.description.split("]")[0].replace('[', '')
+                                            let link = block.description.split("]")[1].replace('(', '').replace(')', '')
+                                            return `<p><a href="${link}" target="_blank">${text}</a></p>`
+                                        }
+                                    })()}
+                                </div>
+                                `
+                            };
                         case "Text":
                             return ``
                         };
-                        
                     })()}
                 `
             })
