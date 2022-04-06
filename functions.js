@@ -107,7 +107,7 @@ function renderChannel(slug) {
                                         <div class="cover-img img-wrap">
                                             <img src="${block.image.large.url}" />
                                             ${(() => {
-                                                if (block.description != null || block.description != "") {
+                                                if (block.description !== null || block.description !== "") {
                                                     console.log(block.description)
                                                     let text = block.description.split("]")[0].replace('[', '')
                                                     console.log(block.id)
@@ -123,7 +123,7 @@ function renderChannel(slug) {
                                         <div class="img-wrap">
                                             <img src="${block.image.large.url}" />
                                             ${(() => {
-                                                if (block.description != null || block.description != "") {
+                                                if (block.description !== null || block.description !== "") {
                                                     console.log(block.description)
                                                     let text = block.description.split("]")[0].replace('[', '')
                                                     console.log(block.id)
@@ -155,7 +155,7 @@ function renderChannel(slug) {
                                             <source src="${block.attachment.url}" type="video/mp4">
                                         </video>
                                         ${(() => {
-                                            if (block.description != null || block.description != "") {
+                                            if (block.description !== null || block.description !== "") {
                                                 console.log(block.description)
                                                 let text = block.description.split("]")[0].replace('[', '')
                                                 console.log(block.id)
