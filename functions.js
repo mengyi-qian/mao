@@ -47,7 +47,7 @@ function renderAllChannels() {
             nav.addEventListener('mouseout', () => {
                 document.querySelector('article.description').style.display = 'none'
             })
-        });
+        })
     
 }
 
@@ -70,7 +70,7 @@ function renderDescription(slug) {
                     `
                 }
             }).join("")
-        });
+        })
 }
 
 
@@ -107,15 +107,8 @@ function renderChannel(slug) {
                                         <div class="cover-img img-wrap">
                                             <img src="${block.image.large.url}" />
                                             ${(() => {
-                                                if (block.description !== null || block.description !== "") {
-                                                    console.log(block.description)
-                                                    let text = block.description.split("]")[0].replace('[', '')
-                                                    console.log(block.id)
-                                                    let link = block.description.split("]")[1].replace('(', '').replace(')', '')
-                                                    console.log(link)
-                                                    return `<p><a href="${link}" target="_blank">${text}</a></p>`
-                                                } else {
-                                                    return ''
+                                                if (block.description != null || block.description !== "") {
+                                                    return `${block.description_html}`
                                                 }
                                             })()}
                                         </div>
@@ -152,15 +145,8 @@ function renderChannel(slug) {
                                             <source src="${block.attachment.url}" type="video/mp4">
                                         </video>
                                         ${(() => {
-                                            if (block.description !== null || block.description !== "") {
-                                                console.log(block.description)
-                                                let text = block.description.split("]")[0].replace('[', '')
-                                                console.log(block.id)
-                                                let link = block.description.split("]")[1].replace('(', '').replace(')', '')
-                                                console.log(link)
-                                                return `<p><a href="${link}" target="_blank">${text}</a></p>`
-                                            } else {
-                                                return ''
+                                            if (block.description != null || block.description !== "") {
+                                                return `${block.description_html}`
                                             }
                                         })()}
                                     </div>
@@ -178,4 +164,7 @@ function renderChannel(slug) {
             .join("")}
         `
     })
+
+    let externalLinks = document.querySelector('div.img-wrap > p > a')
+    externalLinks.forEach(element => element.setAttribute("target", "_blank"))
 }
