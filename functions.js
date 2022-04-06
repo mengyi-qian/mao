@@ -47,11 +47,6 @@ function renderAllChannels() {
             nav.addEventListener('mouseout', () => {
                 document.querySelector('article.description').style.display = 'none'
             })
-
-            let externalLinks = document.querySelector('div.img-wrap > p > a')
-            if (externalLinks != null) {
-                externalLinks.forEach(element => element.setAttribute("target", "_blank"))
-            }
             
 
             
@@ -107,34 +102,30 @@ function renderChannel(slug) {
                     ${(() => {
                         switch (block.class) {
                         case "Image":
-                            return `
-                                ${(() => {
-                                    if ( block.position === 2) {
-                                        return `
-                                        <div class="cover-img img-wrap">
-                                            <img src="${block.image.large.url}" />
-                                            ${(() => {
-                                                if (block.description != null || block.description !== "") {
-                                                    return `${block.description_html}`
-                                                }
-                                            })()}
-                                        </div>
-                                        `
-                                    } else if (block.position > 2) {
-                                        return `
-                                        <div class="img-wrap">
-                                            <img src="${block.image.large.url}" />
-                                            ${(() => {
-                                                if (block.description != null || block.description !== "") {
-                                                    console.log(block.description_html)
-                                                    return `${block.description_html}`
-                                                }
-                                            })()}
-                                        </div>
-                                        `
-                                    }
-                                })()}
-                            `;
+                            if ( block.position === 2) {
+                                return `
+                                <div class="cover-img img-wrap">
+                                    <img src="${block.image.large.url}" />
+                                    ${(() => {
+                                        if (block.description != null || block.description !== "") {
+                                            return `${block.description_html}`
+                                        }
+                                    })()}
+                                </div>
+                                `
+                            } else if (block.position > 2) {
+                                return `
+                                <div class="img-wrap">
+                                    <img src="${block.image.large.url}" />
+                                    ${(() => {
+                                        if (block.description != null || block.description !== "") {
+                                            console.log(block.description_html)
+                                            return `${block.description_html}`
+                                        }
+                                    })()}
+                                </div>
+                                `
+                            };
                         case "Attachment":
                             return `
                             ${(() => {
