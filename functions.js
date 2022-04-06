@@ -110,6 +110,7 @@ function renderChannel(slug) {
                                                 if (block.description !== null) {
                                                     let text = block.description.split("]")[0].replace('[', '')
                                                     let link = block.description.split("]")[1].replace('(', '').replace(')', '')
+                                                    console.log(text)
                                                     console.log(link)
                                                     return `<p><a href="${link}" target="_blank">${text}</a></p>`
                                                 }
@@ -124,6 +125,7 @@ function renderChannel(slug) {
                                                 if (block.description !== null) {
                                                     let text = block.description.split("]")[0].replace('[', '')
                                                     let link = block.description.split("]")[1].replace('(', '').replace(')', '')
+                                                    console.log(text)
                                                     console.log(link)
                                                     return `<p><a href="${link}" target="_blank">${text}</a></p>`
                                                 }
@@ -154,6 +156,7 @@ function renderChannel(slug) {
                                             if (block.description !== null) {
                                                 let text = block.description.split("]")[0].replace('[', '')
                                                 let link = block.description.split("]")[1].replace('(', '').replace(')', '')
+                                                console.log(text)
                                                 console.log(link)
                                                 return `<p><a href="${link}" target="_blank">${text}</a></p>`
                                             }
