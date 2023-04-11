@@ -13,13 +13,18 @@ function renderAllChannels() {
             document.querySelector('p.nav').innerHTML = `
                 ${channel.contents
                 .map(block => {
-                    return `
-                        ${(() => {
-                            if ( block.class === 'Channel') {
-                                return `<a id="${block.slug}" class="name">${block.title}</a>, `
-                            }
-                        })()}
-                    `;
+                    if ( block.class === 'Channel') {
+                        return `<a id="${block.slug}" class="name">${block.title}</a>, `
+                    }
+                })
+                .join("")}
+            `
+            document.querySelector('#description').innerHTML = `
+                ${channel.contents
+                .map(block => {
+                    if ( block.class === 'Text') {
+                        return `${block.content}`
+                    }
                 })
                 .join("")}
             `
@@ -170,4 +175,16 @@ function renderChannel(slug) {
     })
 
     
+}
+
+
+function renderAbout() {
+    let contentsURL = `https://api.are.na/v2/channels/description-ig2pvyzeaim?sort=position`;
+
+    fetch(contentsURL)
+    .then(response => response.json())
+    .then(channel => {
+        console.log(channel)
+    })
+
 }

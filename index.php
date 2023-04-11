@@ -25,7 +25,7 @@
 
     <header>
       <ul class="about">
-        <li><a>CHURONG MAO</a><span>is an interdisciplinary designer who’s currently completing her MFA at Yale School of Art.</span></li>
+        <li><a>CHURONG MAO</a><span id="description"></span></li>
         <li class="email">maochurong@gmail.com</li>
       </ul>
       <p class="nav"></p>
