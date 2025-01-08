@@ -42,7 +42,7 @@ a {
 }
 .bold,
 a:hover {
-    font-family: 'Pasta Bold', 'Arial', 'Helvetica', sans-serif;
+    font-family: 'Pasta Bold','Pasta Regular', 'Arial', 'Helvetica', sans-serif;
     font-style: bold;
 }
 
@@ -79,6 +79,13 @@ header article.description {
     padding-left: 25%;
 }
 
+/* ABOUT */
+
+div#about {
+    padding: .5rem;
+    top: 1.75rem;
+}
+
 
 /* MAIN */
 main.project-container {
@@ -112,10 +119,10 @@ main.project-container .video-wrap p {
 
 
 /* VIDEO DISPLAY */
-.cover {
+.fullscreen {
     object-fit: cover;
 }
-.contain {
+.small {
     object-fit: contain;
 }
 
@@ -147,6 +154,9 @@ header.dark-mode {
 }
 main.dark-mode {
     color: var(--text-color-dark-mode);
+    background-color: var(--bg-color-dark-mode);
+}
+body.dark-mode {
     background-color: var(--bg-color-dark-mode);
 }
 .dark-mode ul::selection,

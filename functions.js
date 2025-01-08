@@ -1,190 +1,110 @@
-function renderAllChannels() {
-    
-    let contentsURL = `https://api.are.na/v2/channels/000projects?sort=position`;
-    
-    // Fetch the channel data from the Are.na API
-    fetch(contentsURL)
-        // Grab the response in JSON
-        .then(response => response.json())
-    
-        .then(channel => {
-            // console.log(channel)
-        
-            document.querySelector('p.nav').innerHTML = `
-                ${channel.contents
-                .map(block => {
-                    if ( block.class === 'Channel') {
-                        return `<a id="${block.slug}" class="name">${block.title}</a>, `
-                    }
-                })
-                .join("")}
-            `
-            document.querySelector('#description').innerHTML = `
-                ${channel.contents
-                .map(block => {
-                    if ( block.class === 'Text') {
-                        return `${block.content}`
-                    }
-                })
-                .join("")}
-            `
-
-            let nav = document.querySelector('p.nav')
-            let links = document.querySelectorAll('p.nav a')
-
-            for (let link of links) {
-                link.addEventListener('click', () => {
-                    links.forEach(element => element.classList.remove('bold'))
-                    link.classList.add('bold')
-                    window.scrollTo(0, 0)
-                    let channelSlug = link.id
-                    renderChannel(channelSlug)
-                })
-            }
-
-            nav.addEventListener('mouseover', (e) => {
-                if (e.target.classList.contains("name")) {
-                    let channelSlug = e.target.id
-                    renderDescription(channelSlug)
-                    document.querySelector('article.description').style.display = 'block'
-                }
-            })
-            nav.addEventListener('mouseout', () => {
-                document.querySelector('article.description').style.display = 'none'
-            })
-            
-
-            
-        })
+let navContent = ''
+for ( let project of projects ) {
+    navContent += `<a id="${project.slug}" class="name">${project.title}</a>,&nbsp;`;
 }
 
+document.querySelector('p.nav').innerHTML = navContent;
 
-function renderDescription(slug) {
-    
-    let contentsURL = `https://api.are.na/v2/channels/${slug}?sort=position`;
-    
-    fetch(contentsURL)
+let nav = document.querySelector('p.nav')
+let links = document.querySelectorAll('p.nav a')
 
-        .then(response => response.json())
-    
-        .then(channel => {
-            // console.log(channel)
-
-            channel.contents.map(block => {
-                if (block.position === 1 && block.class === "Text") {
-                    document.querySelector('article.description').innerHTML = `
-                        <p class="info">${block.description}</p>${block.content_html}
-                    `
-                }
-            }).join("")
-        })
+for (let link of links) {
+    link.addEventListener('click', (e) => {
+        links.forEach(element => element.classList.remove('bold'))
+        link.classList.add('bold')
+        window.scrollTo(0, 0)
+        let projectSlug = link.id
+        let index = projects.findIndex(project => project.slug === projectSlug)
+        // console.log(index)
+        renderProject(index)
+    })
 }
 
+nav.addEventListener('mouseover', (e) => {
+    if (e.target.classList.contains("name")) {
+        let projectSlug = e.target.id
+        let index = projects.findIndex(project => project.slug === projectSlug)
+        renderDescription(index)
+        document.querySelector('article.description').style.display = 'block'
+    }
+})
 
+nav.addEventListener('mouseout', () => {
+    document.querySelector('article.description').style.display = 'none'
+})
 
-function renderChannel(slug) {
+function renderDescription(index) {
+    document.querySelector('article.description').innerHTML = `
+        <p class="info">${projects[index].description}</p>
+    `
+}
 
-    let contentsURL = `https://api.are.na/v2/channels/${slug}?sort=position`;
+function renderProject(index) {
+    if (projects[index].mode === "dark") {
+        document.querySelector('header').classList.add("dark-mode")
+        document.querySelector('main').classList.add("dark-mode")
+        document.querySelector('body').classList.add("dark-mode")
+    } else {
+        document.querySelector('header').classList.remove("dark-mode")
+        document.querySelector('main').classList.remove("dark-mode")
+        document.querySelector('body').classList.remove("dark-mode")
+    }
 
-    fetch(contentsURL)
-    .then(response => response.json())
-    .then(channel => {
-        // console.log(channel)
+    let coverImage = ``
+    let coverLink = ``
+    let imageLink = ``
+    let projectContent = ``
 
-        if (channel.metadata.description === "dark") {
-            document.querySelector('header').classList.add("dark-mode")
-            document.querySelector('main').classList.add("dark-mode")
-        } else {
-            document.querySelector('header').classList.remove("dark-mode")
-            document.querySelector('main').classList.remove("dark-mode")
-        }
-
-        document.querySelector('main.project-container').innerHTML = `
-            ${channel.contents
-            .map(block => {
-                return `
-                    ${(() => {
-                        switch (block.class) {
-                        case "Image":
-                            if ( block.position === 2) {
-                                return `
-                                <div class="cover-img img-wrap">
-                                    <img src="${block.image.large.url}" />
-                                    ${(() => {
-                                        if (block.description.length > 0) {
-                                            let text = block.description.split("]")[0].replace('[', '')
-                                            let link = block.description.split("]")[1].replace('(', '').replace(')', '')
-                                            return `<p><a href="${link}" target="_blank">${text}</a></p>`
-                                        } else {
-                                            return ``
-                                        }
-                                    })()}
-                                </div>
-                                `
-                            } else if (block.position > 2) {
-                                return `
-                                <div class="img-wrap">
-                                    <img src="${block.image.large.url}" />
-                                    ${(() => {
-                                        if (block.description.length > 0) {
-                                            let text = block.description.split("]")[0].replace('[', '')
-                                            let link = block.description.split("]")[1].replace('(', '').replace(')', '')
-                                            return `<p><a href="${link}" target="_blank">${text}</a></p>`
-                                        } else {
-                                            return ``
-                                        }
-                                    })()}
-                                </div>
-                                `
-                            };
-                        case "Attachment":
-                            if (block.description === "small") {
-                                return `
-                                <div class="video-wrap">
-                                    <video class="contain" loop muted autoplay playsinline>
-                                        <source src="${block.attachment.url}" type="video/mp4">
-                                    </video>
-                                </div>
-                                `
-                            } else {
-                                return `
-                                <div class="video-wrap">
-                                    <video class="cover" loop muted autoplay playsinline>
-                                        <source src="${block.attachment.url}" type="video/mp4">
-                                    </video>
-                                    ${(() => {
-                                        if (block.description.length > 0) {
-                                            let text = block.description.split("]")[0].replace('[', '')
-                                            let link = block.description.split("]")[1].replace('(', '').replace(')', '')
-                                            return `<p><a href="${link}" target="_blank">${text}</a></p>`
-                                        } else {
-                                            return ``
-                                        }
-                                    })()}
-                                </div>
-                                `
-                            };
-                        case "Text":
-                            return ``
-                        };
-                    })()}
-                `
-            })
-            .join("")}
+    if (projects[index].cover[1] === "image") {
+        coverImage = `<img src="${projects[index].cover[0]}" />`
+    } else if (projects[index].cover[1] === "video") {
+        coverImage = `
+            <video class="${projects[index].cover[2]}" loop muted autoplay playsinline>
+                <source src="${projects[index].cover[0]}" type="video/mp4">
+            </video>
         `
-    })
+    }
 
+    if (projects[index].coverLink.length > 0) {
+        coverLink = `<p><a href="${projects[index].coverLink[0]}" target="_blank">${projects[index].coverLink[1]}</a></p>`
+    }
+
+    if (projects[index].cover.length > 0) {
+        projectContent = `
+            <div class="cover-img img-wrap">
+                ${coverImage}
+                ${coverLink}
+            </div>
+        `
+    }
     
-}
-
-
-function renderAbout() {
-    let contentsURL = `https://api.are.na/v2/channels/description-ig2pvyzeaim?sort=position`;
-
-    fetch(contentsURL)
-    .then(response => response.json())
-    .then(channel => {
-        console.log(channel)
-    })
+    if (projects[index].urls.length > 0) {
+        for ( let url of projects[index].urls ) {
+            imageLink = ``
+            if (url.length > 3) {
+                imageLink = `<p><a href="${url[3]}" target="_blank">${url[4]}</a></p>`
+            }
+            if (url[1] === 'image') {
+                projectContent += `
+                    <div class="img-wrap">
+                        <img src="${url[0]}" />
+                        ${imageLink}
+                    </div>
+                `;
+            } else if (url[1] === 'video') {
+                projectContent += `
+                    <div class="video-wrap">
+                        <video class="${url[2]}" loop muted autoplay playsinline>
+                            <source src="${url[0]}" type="video/mp4">
+                        </video>
+                        ${imageLink}
+                    </div>
+                `;
+            }
+            
+        }
+    }
+  
+    document.querySelector('main.project-container').innerHTML = projectContent
 
 }
