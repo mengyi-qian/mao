@@ -1,0 +1,5 @@
+services:
+  mengyiqian.com:
+    build: .
+    ports:
+      - "8082:80"
